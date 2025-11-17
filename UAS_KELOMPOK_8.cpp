@@ -37,3 +37,16 @@ bool papanPenuh() {
                 return false;
     return true;
 }
+
+void isiKotak(int posisi) {
+    int baris = (posisi - 1) / 3;
+    int kolom = (posisi - 1) % 3;
+    if (board[baris][kolom] != 'X' && board[baris][kolom] != 'O')
+        board[baris][kolom] = currentPlayer;
+    else
+        cout << "Posisi sudah diisi! Coba lagi.\n";
+}
+
+void gantiPemain() {
+    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+}
