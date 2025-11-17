@@ -50,3 +50,30 @@ void isiKotak(int posisi) {
 void gantiPemain() {
     currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
 }
+
+int main() {
+    int pilihan;
+    bool menang = false;
+
+    while (!menang && !papanPenuh()) {
+        tampilkanPapan();
+        cout << "Giliran pemain " << currentPlayer << ". Masukkan posisi (1-9): ";
+        cin >> pilihan;
+
+        if (pilihan >= 1 && pilihan <= 9) {
+            isiKotak(pilihan);
+            if (cekPemenang()) {
+                tampilkanPapan();
+                cout << "Pemain " << currentPlayer << " menang!\n";
+                menang = true;
+            } else gantiPemain();
+        } else {
+            cout << "Input tidak valid!\n";
+        }
+    }
+
+    if (!menang)
+        cout << "Permainan berakhir seri!\n";
+
+    return 0;
+}
